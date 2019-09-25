@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "chess.js": "^0.10.2",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "heroku": "^7.30.0",
     "swagger-jsdoc": "^3.4.0",

@@ -15,6 +15,7 @@ const options = {
   apis: ['app.js'],
 };
 const specs = swaggerJsdoc(options);
+const cors = require("cors");
 
 var engines = {
     randony: new (require('./engines/randony.js').Randony)()
@@ -22,6 +23,7 @@ var engines = {
 
 var app = express();
 
+app.use(cors());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 app.get('/about', function(req, res) {

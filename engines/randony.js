@@ -7,6 +7,7 @@ class Randony {
     {
         var game = new Chess(fen);
         var validMoves = game.moves();
+        if(validMoves.length == 0) return "gameover";
         return validMoves[Math.floor(Math.random() * validMoves.length)];
     }
 
