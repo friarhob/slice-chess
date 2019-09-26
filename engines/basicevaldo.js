@@ -9,19 +9,19 @@ class BasicEvaldo {
         const base = table.length;
         var resEval=0;
 
-        resEval+=(base-table.replace("P","").length)*10;
-        resEval+=(base-table.replace("N","").length)*30;
-        resEval+=(base-table.replace("B","").length)*30;
-        resEval+=(base-table.replace("R","").length)*50;
-        resEval+=(base-table.replace("Q","").length)*90;
-        resEval+=(base-table.replace("K","").length)*900;
+        resEval+=(base-table.replace(/P/g,"").length)*10;
+        resEval+=(base-table.replace(/N/g,"").length)*30;
+        resEval+=(base-table.replace(/B/g,"").length)*30;
+        resEval+=(base-table.replace(/R/g,"").length)*50;
+        resEval+=(base-table.replace(/Q/g,"").length)*90;
+        resEval+=(base-table.replace(/K/g,"").length)*900;
 
-        resEval-=(base-table.replace("p","").length)*10;
-        resEval-=(base-table.replace("n","").length)*30;
-        resEval-=(base-table.replace("b","").length)*30;
-        resEval-=(base-table.replace("r","").length)*50;
-        resEval-=(base-table.replace("q","").length)*90;
-        resEval-=(base-table.replace("k","").length)*900;
+        resEval-=(base-table.replace(/p/g,"").length)*10;
+        resEval-=(base-table.replace(/n/g,"").length)*30;
+        resEval-=(base-table.replace(/b/g,"").length)*30;
+        resEval-=(base-table.replace(/r/g,"").length)*50;
+        resEval-=(base-table.replace(/q/g,"").length)*90;
+        resEval-=(base-table.replace(/k/g,"").length)*900;
 
         return resEval;
     }
@@ -57,6 +57,7 @@ class BasicEvaldo {
                 bestMove = validMoves[i];
             }
         }
+
         return bestMove;
     }
 
