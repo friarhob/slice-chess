@@ -51,7 +51,7 @@ class BasicEvaldo {
             game.move(validMoves[i]);
             var curEval = this.evalTable(game.fen());
             game.undo();
-            if(curEval > bestEval)
+            if(curEval < bestEval)
             {
                 bestEval = curEval;
                 bestMove = validMoves[i];
