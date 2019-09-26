@@ -18,7 +18,8 @@ const specs = swaggerJsdoc(options);
 const cors = require("cors");
 
 var engines = {
-    randony: new (require('./engines/randony.js').Randony)()
+    randony: new (require('./engines/randony.js').Randony)(),
+    basicevaldo: new (require('./engines/basicevaldo.js').BasicEvaldo)()
 };
 
 var app = express();
