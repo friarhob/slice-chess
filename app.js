@@ -26,6 +26,9 @@ var app = express();
 app.use(cors());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
+app.get('/', function(req, res) {
+    res.redirect('/api-docs');
+});
 app.get('/about', function(req, res) {
     res.send(JSON.stringify({ Author: "Friar Hob" }));
 });
