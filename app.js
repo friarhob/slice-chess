@@ -12,7 +12,7 @@ const options = {
         openapi: "3.0.0"
    },
   },
-  apis: ['app.js'],
+  apis: ['app.js', 'endpoints/*.js'],
 };
 const specs = swaggerJsdoc(options);
 const cors = require("cors");
