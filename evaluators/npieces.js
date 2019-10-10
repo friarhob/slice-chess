@@ -1,9 +1,11 @@
 class NPieces {
     constructor(fen)
     {
-        this.fen = fen.split(" ")[0];
-        if!(/^((([prnbqkPRNBQK12345678]*/){7})([prnbqkPRNBQK12345678]*)) (w|b) ((K?Q?k?q?)|\\-) (([abcdefgh][36])|\\-) (\\d*) (\\d*)/.test(fen))
-            throw("Not a valid FEN string");
+        if(fen) {
+            this.fen = fen.split(" ")[0];
+            if ((new RegExp("/^[prnbqkPRNBQK12345678]*\/{7}[prnbqkPRNBQK12345678]*/")).test(fen))
+                throw("Not a valid FEN string");
+        }
     }
     
     eval()

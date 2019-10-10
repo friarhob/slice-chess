@@ -22,6 +22,12 @@ var engines = {
     basicevaldo: new (require('./engines/basicevaldo.js').BasicEvaldo)()
 };
 
+
+
+var evaluators = {
+    npieces: new (require('./evaluators/npieces.js').NPieces)()
+};
+
 var app = express();
 
 app.use(cors());
@@ -44,7 +50,7 @@ app.get('/about', function(req, res) {
 app.get('/engines', function(req, res) {
     var enginesDesc = [];
     for(var item in engines) {
-//        console.log(item.toString());
+        console.log(item.toString());
         enginesDesc.push(item.toString());
     }  
     res.send(JSON.stringify({ engineIDs: enginesDesc }));
