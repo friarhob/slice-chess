@@ -1,16 +1,11 @@
 class NPieces {
-    constructor(fen)
+    constructor()
     {
-        if(fen) {
-            this.fen = fen.split(" ")[0];
-            if ((new RegExp("/^[prnbqkPRNBQK12345678]*\/{7}[prnbqkPRNBQK12345678]*/")).test(fen))
-                throw("Not a valid FEN string");
-        }
     }
     
-    eval()
+    eval(fen)
     {
-        var table=this.fen.split(" ")[0];
+        var table=fen.split(" ")[0];
         const base = table.length;
         var resEval=0;
 
@@ -28,12 +23,15 @@ class NPieces {
         resEval-=(base-table.replace(/q/g,"").length)*90;
         resEval-=(base-table.replace(/k/g,"").length)*900;
 
-        return resEval;        
+        return resEval;
     }
     
     toString()
     {
-        return {eval: this.eval()};
+        return {
+            id: "npieces",
+            description: "return the sum of pieces in table (White positive, Black negative, P=10, BN=30, R=50, Q=90, K=900)"
+        };
     }
 }
 

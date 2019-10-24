@@ -76,6 +76,60 @@ app.get('/engines/:id', function(req, res) {
     res.send(JSON.stringify({nextMove: move}));
 });
 
+/**
+ * @swagger
+ * /evaluators:
+ *      get:
+ *          description: This should return a list with all evaluators available
+ *      
+ */
+app.get('/evaluators', function(req, res) {
+    var evaluatorsDesc = [];
+    for(var item in evaluators) {
+        console.log(item.toString());
+        evaluatorsDesc.push(item.toString());
+    }  
+    res.send(JSON.stringify({ evaluatorIDs: evaluatorsDesc }));
+});
+
+/**
+ * @swagger
+ * /evaluators/{id}:
+ *      get:
+ *          description: description of the evaluator behaviour
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            required: true
+ *            description: the ID of the evaluator
+ */
+app.get('/evaluators/:id', function(req, res) {
+    res.send(JSON.stringify(evaluators[req.params.id].toString()));
+});
+
+/**
+ * @swagger
+ * /evaluators/{id}/{fen}:
+ *      get:
+ *          description: return the evaluation for the table represented by FEN
+ *      parameters:
+ *          - in: path
+ *            name: id
+ *            required: true
+ *            description: the ID of the evaluator
+ *          - in: path
+ *            name: fen
+ *            required: true
+ *            description: the FEN to be evaluated 
+ */
+
+app.get('/evaluators/:id/:fen', function(req, res) {
+    var evaluation;
+    evaluation = evaluators[req.params.id].eval(req.params.fen);
+    res.send(JSON.stringify({eval: evaluation}));
+});
+
+
 app.listen(port, function () {
  console.log(`app listening on port 8000!`);
 });
